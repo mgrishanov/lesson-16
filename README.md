@@ -78,7 +78,10 @@ SELECT
 FROM user_activity
 GROUP BY partition
 ORDER BY partition;
+```
+![5.png](src/img/5.png)
 
+```sql
 -- Проверим текущие партиции таблицы
 SELECT
     partition,
@@ -87,9 +90,6 @@ SELECT
 FROM system.parts
 WHERE table = 'user_activity' AND active = 1;
 ```
-
-![5.png](src/img/5.png)
-
 ![6.png](src/img/6.png)
 
 ## Дополнительные задания
@@ -99,13 +99,15 @@ WHERE table = 'user_activity' AND active = 1;
 ```sql
 -- Удаление данных с помощью мутации
 ALTER TABLE user_activity DELETE WHERE user_id = 4;
+```
+![7.png](src/img/7.png)
+
+```sql
 -- Добавление нового столбца
 ALTER TABLE user_activity ADD COLUMN session_id String DEFAULT generateUUIDv4();
 -- Заполнение нового столбца
 ALTER TABLE user_activity UPDATE session_id = generateUUIDv4() WHERE 1;
 ```
-
-![7.png](src/img/7.png)
 
 ![8.png](src/img/8.png)
 
